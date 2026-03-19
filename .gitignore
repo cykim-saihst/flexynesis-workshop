@@ -1,0 +1,7 @@
+brca_metabric_processed/
+brca_metabric.tgz
+brca_mini/
+models/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc

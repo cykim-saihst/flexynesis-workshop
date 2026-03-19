@@ -1,0 +1,18 @@
+title: "Flexynesis Workshop"
+author: cykim-saihst
+logo: ""
+
+repository:
+  url: https://github.com/cykim-saihst/flexynesis-workshop
+  branch: main
+
+launch_buttons:
+  binderhub_url: "https://mybinder.org"
+  notebook_interface: "jupyterlab"
+
+execute:
+  execute_notebooks: "off"
+
+html:
+  use_issues_button: true
+  use_repository_button: true
