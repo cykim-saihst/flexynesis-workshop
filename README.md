@@ -11,7 +11,6 @@
 | [Evaluation Metrics](https://cykim-saihst.github.io/flexynesis-workshop/evaluation.html) | Metrics by task type |
 | [Using Your Own Data](https://cykim-saihst.github.io/flexynesis-workshop/custom_data.html) | Custom data format guide |
 | [Workshop Notebook](https://cykim-saihst.github.io/flexynesis-workshop/flexynesis_workshop.html) | Hands-on tutorial |
-| [Inference Notebook](https://cykim-saihst.github.io/flexynesis-workshop/inference_workshop.html) | Using pre-trained models |
 
 Deep learning multi-omics integration using [flexynesis](https://github.com/BIMSBbioinfo/flexynesis).
 
