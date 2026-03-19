@@ -47,5 +47,5 @@ pip install flexynesis jupyter
 
 ```bash
 conda activate flexy
-jupyter notebook /home/cykim/workshop/flexynesis_workshop.ipynb
+jupyter notebook flexynesis_workshop.ipynb
 ```
