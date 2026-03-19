@@ -40,6 +40,8 @@ Data is pre-installed on the lab server — no download needed:
 
 ```bash
 git clone https://github.com/cykim-saihst/flexynesis-workshop.git
+conda create -n flexy python=3.11 -y
+conda activate flexy
 pip install flexynesis jupyter
 ```
 
