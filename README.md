@@ -23,6 +23,12 @@ BRCA METABRIC — gex + cna + mut (mini: 200 train / 80 test)
 └── brca_mini/
 ```
 
-## Run interactively
+## 실행 방법
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cykim-saihst/flexynesis-workshop/main?labpath=flexynesis_workshop.ipynb)
+랩 서버에서:
+```bash
+git clone git@github.com:cykim-saihst/flexynesis-workshop.git
+cd flexynesis-workshop
+conda activate flexy
+jupyter notebook flexynesis_workshop.ipynb
+```

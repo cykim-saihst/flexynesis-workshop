@@ -6,9 +6,6 @@ repository:
   url: https://github.com/cykim-saihst/flexynesis-workshop
   branch: main
 
-launch_buttons:
-  binderhub_url: "https://mybinder.org"
-  notebook_interface: "jupyterlab"
 
 execute:
   execute_notebooks: "off"
