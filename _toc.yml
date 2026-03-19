@@ -3,4 +3,8 @@ root: intro
 chapters:
   - file: models
   - file: data_guide
+  - file: hpo_guide
+  - file: evaluation
+  - file: custom_data
   - file: flexynesis_workshop
+  - file: inference_workshop
