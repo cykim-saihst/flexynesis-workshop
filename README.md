@@ -2,12 +2,16 @@
 
 **Workshop site**: https://cykim-saihst.github.io/flexynesis-workshop/
 
-| 페이지 | 내용 |
-|--------|------|
-| [소개 + 데이터](https://cykim-saihst.github.io/flexynesis-workshop/intro.html) | BRCA METABRIC 데이터 설명 |
-| [모델 설명](https://cykim-saihst.github.io/flexynesis-workshop/models.html) | 5가지 모델 아키텍처 상세 |
-| [DataImporter 레퍼런스](https://cykim-saihst.github.io/flexynesis-workshop/data_guide.html) | 파라미터 가이드 |
-| [노트북](https://cykim-saihst.github.io/flexynesis-workshop/flexynesis_workshop.html) | 실습 코드 |
+| Page | Content |
+|------|---------|
+| [Introduction & Dataset](https://cykim-saihst.github.io/flexynesis-workshop/intro.html) | BRCA METABRIC dataset overview |
+| [Model Architectures](https://cykim-saihst.github.io/flexynesis-workshop/models.html) | All 5 model architectures |
+| [DataImporter Reference](https://cykim-saihst.github.io/flexynesis-workshop/data_guide.html) | Parameter guide |
+| [HyperparameterTuning Reference](https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html) | HPO parameter guide |
+| [Evaluation Metrics](https://cykim-saihst.github.io/flexynesis-workshop/evaluation.html) | Metrics by task type |
+| [Using Your Own Data](https://cykim-saihst.github.io/flexynesis-workshop/custom_data.html) | Custom data format guide |
+| [Workshop Notebook](https://cykim-saihst.github.io/flexynesis-workshop/flexynesis_workshop.html) | Hands-on tutorial |
+| [Inference Notebook](https://cykim-saihst.github.io/flexynesis-workshop/inference_workshop.html) | Using pre-trained models |
 
 Deep learning multi-omics integration using [flexynesis](https://github.com/BIMSBbioinfo/flexynesis).
 
@@ -25,25 +29,21 @@ Deep learning multi-omics integration using [flexynesis](https://github.com/BIMS
 
 BRCA METABRIC — gex + cna + mut (mini: 200 train / 80 test)
 
-랩 서버에서 실행 시 데이터 별도 다운로드 불필요:
+Data is pre-installed on the lab server — no download needed:
 ```
 /data01/storage/flexynesis_workshop/
 ├── brca_metabric_processed/
 └── brca_mini/
 ```
 
-## 실행 방법
-
-### 환경 설정
+## Setup
 
 ```bash
 git clone https://github.com/cykim-saihst/flexynesis-workshop.git
-conda create -n flexy python=3.11 -y
-conda activate flexy
 pip install flexynesis jupyter
 ```
 
-### 실행
+## Run
 
 ```bash
 conda activate flexy
