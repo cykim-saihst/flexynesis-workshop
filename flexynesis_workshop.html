@@ -495,8 +495,9 @@ CUDA available: True
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">USE_MINI</span> <span class="o">=</span> <span class="kc">True</span>   <span class="c1"># 빠른 테스트: True / 실제 분석: False</span>
 <span class="n">HPO_ITER</span> <span class="o">=</span> <span class="mi">3</span>      <span class="c1"># HPO 반복 횟수 (실제: 50+)</span>
 
-<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;./brca_metabric_processed&quot;</span>
-<span class="n">MINI_DIR</span> <span class="o">=</span> <span class="s2">&quot;./brca_mini&quot;</span>
+<span class="c1"># 랩 공유 스토리지 경로 (다운로드 불필요)</span>
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="s2">&quot;/data01/storage/flexynesis_workshop/brca_metabric_processed&quot;</span>
+<span class="n">MINI_DIR</span>  <span class="o">=</span> <span class="s2">&quot;/data01/storage/flexynesis_workshop/brca_mini&quot;</span>
 </pre></div>
 </div>
 </div>
