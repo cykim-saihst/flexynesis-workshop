@@ -2,6 +2,13 @@
 
 **Workshop site**: https://cykim-saihst.github.io/flexynesis-workshop/
 
+| 페이지 | 내용 |
+|--------|------|
+| [소개 + 데이터](https://cykim-saihst.github.io/flexynesis-workshop/intro.html) | BRCA METABRIC 데이터 설명 |
+| [모델 설명](https://cykim-saihst.github.io/flexynesis-workshop/models.html) | 5가지 모델 아키텍처 상세 |
+| [DataImporter 레퍼런스](https://cykim-saihst.github.io/flexynesis-workshop/data_guide.html) | 파라미터 가이드 |
+| [노트북](https://cykim-saihst.github.io/flexynesis-workshop/flexynesis_workshop.html) | 실습 코드 |
+
 Deep learning multi-omics integration using [flexynesis](https://github.com/BIMSBbioinfo/flexynesis).
 
 ## Models covered
