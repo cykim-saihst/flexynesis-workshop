@@ -1,4 +1,6 @@
 format: jb-book
-root: README
+root: intro
 chapters:
+  - file: models
+  - file: data_guide
   - file: flexynesis_workshop
