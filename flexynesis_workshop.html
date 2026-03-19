@@ -641,6 +641,7 @@ CLAUDIN_SUBTYPE: {&#39;Her2&#39;: 23, &#39;LumA&#39;: 71, &#39;LumB&#39;: 50, &#
 </section>
 <section id="section-1-directpred">
 <h2>Section 1. DirectPred — 분류<a class="headerlink" href="#section-1-directpred" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span> <span class="pre">+</span> <span class="pre">cna</span></code> → <code class="docutils literal notranslate"><span class="pre">CLAUDIN_SUBTYPE</span></code> (classification)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
@@ -928,6 +929,7 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
 </section>
 <section id="section-2-directpred">
 <h2>Section 2. DirectPred — 생존분석<a class="headerlink" href="#section-2-directpred" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span> <span class="pre">+</span> <span class="pre">cna</span></code> → <code class="docutils literal notranslate"><span class="pre">OS_STATUS</span> <span class="pre">/</span> <span class="pre">OS_MONTHS</span></code> (survival)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
@@ -1211,6 +1213,7 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
 </section>
 <section id="section-3-supervised-vae">
 <h2>Section 3. supervised_vae — 분류<a class="headerlink" href="#section-3-supervised-vae" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span> <span class="pre">+</span> <span class="pre">cna</span></code> → <code class="docutils literal notranslate"><span class="pre">CLAUDIN_SUBTYPE</span></code> (classification)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
@@ -1485,6 +1488,7 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
 </section>
 <section id="section-4-supervised-vae">
 <h2>Section 4. supervised_vae — 비지도<a class="headerlink" href="#section-4-supervised-vae" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span> <span class="pre">+</span> <span class="pre">cna</span></code> → latent z → Louvain clustering (unsupervised)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
@@ -1701,6 +1705,7 @@ AMI/ARI vs CLAUDIN_SUBTYPE: {&#39;ami&#39;: 0.24825751180562572, &#39;ari&#39;: 
 </section>
 <section id="section-5-multitripletnetwork">
 <h2>Section 5. MultiTripletNetwork<a class="headerlink" href="#section-5-multitripletnetwork" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span> <span class="pre">+</span> <span class="pre">cna</span></code> → <code class="docutils literal notranslate"><span class="pre">CLAUDIN_SUBTYPE</span></code> (metric learning)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
@@ -2013,6 +2018,7 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
 </section>
 <section id="section-6-gnn">
 <h2>Section 6. GNN<a class="headerlink" href="#section-6-gnn" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span></code> + STRING PPI graph → <code class="docutils literal notranslate"><span class="pre">CLAUDIN_SUBTYPE</span></code> (classification)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
@@ -2379,6 +2385,7 @@ LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2]
 </section>
 <section id="section-7-crossmodalpred">
 <h2>Section 7. CrossModalPred<a class="headerlink" href="#section-7-crossmodalpred" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">gex</span></code> → <code class="docutils literal notranslate"><span class="pre">cna</span></code> (reconstruction) + <code class="docutils literal notranslate"><span class="pre">CLAUDIN_SUBTYPE</span></code> (classification)</p>
 <blockquote>
 <div><p>파라미터 상세 설명 → <a class="reference external" href="https://cykim-saihst.github.io/flexynesis-workshop/hpo_guide.html">HyperparameterTuning Reference</a></p>
 </div></blockquote>
