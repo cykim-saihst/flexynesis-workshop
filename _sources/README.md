@@ -38,7 +38,6 @@ Data is pre-installed on the lab server — no download needed:
 ## Setup
 
 ```bash
-git clone https://github.com/cykim-saihst/flexynesis-workshop.git
 conda create -n flexy python=3.11 -y
 conda activate flexy
 pip install flexynesis jupyter
@@ -48,5 +47,5 @@ pip install flexynesis jupyter
 
 ```bash
 conda activate flexy
-jupyter notebook flexynesis_workshop.ipynb
+jupyter notebook /home/cykim/workshop/flexynesis_workshop.ipynb
 ```
