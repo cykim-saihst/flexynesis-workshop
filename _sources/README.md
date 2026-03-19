@@ -1,5 +1,7 @@
 # Flexynesis Workshop
 
+**Workshop site**: https://cykim-saihst.github.io/flexynesis-workshop/
+
 Deep learning multi-omics integration using [flexynesis](https://github.com/BIMSBbioinfo/flexynesis).
 
 ## Models covered
