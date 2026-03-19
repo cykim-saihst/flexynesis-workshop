@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using Your Own Data &#8212; Flexynesis Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'custom_data';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Flexynesis Workshop" href="flexynesis_workshop.html" />
+    <link rel="prev" title="Evaluation Metrics" href="evaluation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Flexynesis Workshop</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Flexynesis Workshop
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_guide.html">DataImporter Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hpo_guide.html">HyperparameterTuning Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Metrics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Your Own Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flexynesis_workshop.html">Flexynesis Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference_workshop.html">Flexynesis — Inference Workshop</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cykim-saihst/flexynesis-workshop" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cykim-saihst/flexynesis-workshop/issues/new?title=Issue%20on%20page%20%2Fcustom_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/custom_data.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using Your Own Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure">Directory Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-format">File Format</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omics-protein-csv-microbiome-csv-genotype-csv">omics 파일 (protein.csv, microbiome.csv, genotype.csv 등)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clin-csv">clin.csv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-type">Data Type별 특징</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">Train/Test Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-type-detection">Variable Type Detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-sample-size">Minimum Sample Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-omics">Single Omics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist">Checklist</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-your-own-data">
+<h1>Using Your Own Data<a class="headerlink" href="#using-your-own-data" title="Link to this heading">#</a></h1>
+<section id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my_data/
+├── train/
+│   ├── clin.csv
+│   ├── protein.csv       # protein expression (있으면)
+│   ├── microbiome.csv    # microbiome abundance (있으면)
+│   ├── genomic_pc.csv    # genotype PCs from PLINK --pca (있으면)
+│   └── prs.csv           # multi-trait PRS (있으면)
+└── test/
+    ├── clin.csv
+    ├── protein.csv
+    ├── microbiome.csv
+    ├── genomic_pc.csv
+    └── prs.csv
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="file-format">
+<h2>File Format<a class="headerlink" href="#file-format" title="Link to this heading">#</a></h2>
+<section id="omics-protein-csv-microbiome-csv-genotype-csv">
+<h3>omics 파일 (protein.csv, microbiome.csv, genotype.csv 등)<a class="headerlink" href="#omics-protein-csv-microbiome-csv-genotype-csv" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>행 = feature</strong> (단백질명, OTU/ASV ID, SNP rsID 등)</p></li>
+<li><p><strong>열 = sample ID</strong></p></li>
+<li><p>index(첫 번째 열)는 feature 이름</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">Subject_001</span>  <span class="n">Subject_002</span>  <span class="n">Subject_003</span>
+<span class="n">IL6</span>           <span class="mf">2.31</span>         <span class="mf">1.54</span>         <span class="mf">3.21</span>
+<span class="n">TNF</span>           <span class="mf">0.87</span>         <span class="mf">2.10</span>         <span class="mf">1.43</span>
+<span class="n">VEGFA</span>         <span class="mf">4.52</span>         <span class="mf">3.87</span>         <span class="mf">2.98</span>
+</pre></div>
+</div>
+</section>
+<section id="clin-csv">
+<h3>clin.csv<a class="headerlink" href="#clin-csv" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>행 = sample</strong></p></li>
+<li><p><strong>열 = 표현형/임상변수</strong></p></li>
+<li><p>index(첫 번째 열)는 sample ID — omics 파일의 열 이름과 일치해야 함</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>              <span class="n">DISEASE</span>     <span class="n">BMI</span>    <span class="n">AGE</span>   <span class="n">COHORT</span>
+<span class="n">Subject_001</span>   <span class="n">case</span>        <span class="mf">27.3</span>   <span class="mi">45</span>    <span class="n">batch1</span>
+<span class="n">Subject_002</span>   <span class="n">control</span>     <span class="mf">22.1</span>   <span class="mi">38</span>    <span class="n">batch2</span>
+<span class="n">Subject_003</span>   <span class="n">case</span>        <span class="mf">31.0</span>   <span class="mi">52</span>    <span class="n">batch1</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>sample ID가 omics와 clin 간에 일치하지 않으면 DataImporter가 자동으로 교집합만 사용.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-type">
+<h2>Data Type별 특징<a class="headerlink" href="#data-type" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>데이터</p></th>
+<th class="head"><p>특징</p></th>
+<th class="head"><p>전처리 권장</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Protein expression</p></td>
+<td><p>연속값, 정규분포에 가까움</p></td>
+<td><p>log2 transform 또는 z-score</p></td>
+</tr>
+<tr class="row-odd"><td><p>Microbiome abundance</p></td>
+<td><p>희소(sparse), 합계=1 (relative)</p></td>
+<td><p>CLR transform 또는 log(x+1)</p></td>
+</tr>
+<tr class="row-even"><td><p>Genotype PCs</p></td>
+<td><p>PLINK <code class="docutils literal notranslate"><span class="pre">--pca</span></code>로 추출한 주성분</p></td>
+<td><p>그대로 사용, 집단 구조 보정 겸 활용</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multi-trait PRS</p></td>
+<td><p>표현형별 PRS를 행(feature)으로 쌓은 matrix</p></td>
+<td><p>그대로 사용</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">log_transform=True</span></code> 옵션으로 DataImporter가 log1p를 자동 적용할 수 있음.</p>
+<p>Raw genotype(VCF/PLINK)은 아래와 같이 요약된 형태로 변환해서 사용하는게 좋을 듯.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># genotype_pc.csv (PLINK --pca 결과 변환)</span>
+              <span class="n">Subject_001</span>  <span class="n">Subject_002</span>  <span class="n">Subject_003</span>
+<span class="n">PC1</span>           <span class="mf">0.23</span>         <span class="o">-</span><span class="mf">0.11</span>         <span class="mf">0.08</span>
+<span class="n">PC2</span>           <span class="mf">0.05</span>          <span class="mf">0.31</span>        <span class="o">-</span><span class="mf">0.14</span>
+<span class="o">...</span>
+<span class="n">PC20</span>          <span class="mf">0.12</span>         <span class="o">-</span><span class="mf">0.04</span>         <span class="mf">0.21</span>
+
+<span class="c1"># prs.csv (trait별 PRS)</span>
+              <span class="n">Subject_001</span>  <span class="n">Subject_002</span>  <span class="n">Subject_003</span>
+<span class="n">PRS_T2D</span>       <span class="mf">0.87</span>          <span class="mf">1.23</span>         <span class="mf">0.54</span>
+<span class="n">PRS_BMI</span>      <span class="o">-</span><span class="mf">0.32</span>          <span class="mf">0.91</span>        <span class="o">-</span><span class="mf">0.10</span>
+<span class="n">PRS_CAD</span>       <span class="mf">1.05</span>         <span class="o">-</span><span class="mf">0.23</span>         <span class="mf">0.77</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="train-test-split">
+<h2>Train/Test Split<a class="headerlink" href="#train-test-split" title="Link to this heading">#</a></h2>
+<p>flexynesis는 train/test 폴더를 직접 받으므로 미리 분할해야 함.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">clin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;clin.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">clin</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">clin</span><span class="p">[</span><span class="s1">&#39;DISEASE&#39;</span><span class="p">]</span>   <span class="c1"># 분류 태스크면 stratify 권장</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="variable-type-detection">
+<h2>Variable Type Detection<a class="headerlink" href="#variable-type-detection" title="Link to this heading">#</a></h2>
+<p>DataImporter는 clin.csv 컬럼을 자동으로 타입 분류.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>조건</p></th>
+<th class="head"><p>인식 타입</p></th>
+<th class="head"><p>처리</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>문자열 또는 unique 값 적음</p></td>
+<td><p>categorical</p></td>
+<td><p>정수 인코딩</p></td>
+</tr>
+<tr class="row-odd"><td><p>숫자형, unique 값 많음</p></td>
+<td><p>numerical</p></td>
+<td><p>그대로 사용</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>분류 태스크 변수는 문자열이거나 카테고리 수가 적어야 함.</p>
+</section>
+<hr class="docutils" />
+<section id="minimum-sample-size">
+<h2>Minimum Sample Size<a class="headerlink" href="#minimum-sample-size" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>모델</p></th>
+<th class="head"><p>최소 권장 train 샘플</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DirectPred</p></td>
+<td><p>50+</p></td>
+</tr>
+<tr class="row-odd"><td><p>supervised_vae</p></td>
+<td><p>50+</p></td>
+</tr>
+<tr class="row-even"><td><p>MultiTripletNetwork</p></td>
+<td><p>클래스당 <strong>2개 이상</strong> 필수</p></td>
+</tr>
+<tr class="row-odd"><td><p>GNN</p></td>
+<td><p>50+</p></td>
+</tr>
+<tr class="row-even"><td><p>CrossModalPred</p></td>
+<td><p>50+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>MultiTripletNetwork는 <code class="docutils literal notranslate"><span class="pre">target_variables[0]</span></code> 기준으로 triplet을 구성하므로 <strong>모든 클래스에 최소 2개</strong> 샘플이 있어야 함.</p>
+</section>
+<hr class="docutils" />
+<section id="single-omics">
+<h2>Single Omics<a class="headerlink" href="#single-omics" title="Link to this heading">#</a></h2>
+<p>단일 데이터 레이어에서도 동일하게 사용 가능. <code class="docutils literal notranslate"><span class="pre">data_types</span></code>에 하나만 지정.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_importer</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataImporter</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">PATH</span><span class="p">,</span>
+    <span class="n">data_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;protein&#39;</span><span class="p">],</span>   <span class="c1"># 단일 레이어</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>임베딩 추출도 동일하게 작동:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>   <span class="c1"># shape: (n_samples, latent_dim)</span>
+</pre></div>
+</div>
+<p>임베딩 활용 예시:</p>
+<ul class="simple">
+<li><p>UMAP/PCA로 샘플 분포 시각화</p></li>
+<li><p>다운스트림 클러스터링 (Louvain, k-means 등)</p></li>
+<li><p>다른 모델의 feature로 활용</p></li>
+</ul>
+<blockquote>
+<div><p>GNN은 단일 레이어(주로 gex)만 지원. CrossModalPred는 <code class="docutils literal notranslate"><span class="pre">input_layers</span></code>와 <code class="docutils literal notranslate"><span class="pre">output_layers</span></code>가 달라야 하므로 최소 2개 레이어가 필요.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="checklist">
+<h2>Checklist<a class="headerlink" href="#checklist" title="Link to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> train/test 폴더 분리</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> omics 파일: 행=feature, 열=sample</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> clin.csv: 행=sample, sample ID가 omics 열 이름과 일치</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 분류 변수: 문자열 또는 소수 카테고리</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> MultiTripletNetwork 사용 시: 모든 클래스 2개 이상</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <code class="docutils literal notranslate"><span class="pre">data_types</span></code>에 실제 파일명 지정 (확장자 제외)</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="evaluation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Evaluation Metrics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="flexynesis_workshop.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Flexynesis Workshop</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure">Directory Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-format">File Format</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#omics-protein-csv-microbiome-csv-genotype-csv">omics 파일 (protein.csv, microbiome.csv, genotype.csv 등)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clin-csv">clin.csv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-type">Data Type별 특징</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">Train/Test Split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-type-detection">Variable Type Detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-sample-size">Minimum Sample Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-omics">Single Omics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist">Checklist</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By cykim-saihst
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

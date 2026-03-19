@@ -1,6 +1,6 @@
-# DataImporter 파라미터 레퍼런스
+# DataImporter Reference
 
-> **필수 입력**: `path`, `data_types` — 나머지는 모두 default 값이 있어 생략 가능
+> **필수 입력**: `path`, `data_types` 
 
 ```python
 data_importer = flexynesis.data.DataImporter(
@@ -11,7 +11,7 @@ data_importer = flexynesis.data.DataImporter(
 train_dataset, test_dataset = data_importer.import_data()
 ```
 
-## 파라미터
+## Parameters
 
 | 파라미터 | 기본값 | 필수 | 설명 |
 |----------|--------|:----:|------|
@@ -28,9 +28,9 @@ train_dataset, test_dataset = data_importer.import_data()
 | `downsample` | `0` | | `0`=전체 샘플 / N>0이면 N개로 랜덤 다운샘플 |
 | `restrict_to_features` | `None` | | 특정 feature만 사용 — **텍스트 파일 경로**를 지정 |
 
-## restrict_to_features 파일 형식
+## restrict_to_features File Format
 
-feature selection보다 먼저 적용됩니다. 이 리스트 안에서만 Laplacian score를 계산합니다.
+feature selection보다 먼저 적용. 이 리스트 안에서만 Laplacian score를 계산.
 
 ```
 # gene_panel.txt
@@ -49,7 +49,7 @@ data_importer = flexynesis.data.DataImporter(
 )
 ```
 
-## 데이터 디렉토리 구조
+## Directory Structure
 
 ```
 PATH/
@@ -65,4 +65,4 @@ PATH/
     └── mut.csv
 ```
 
-> omics 파일은 **행=feature, 열=sample** 형식입니다.
+> omics 파일은 **행=feature, 열=sample** 형식.

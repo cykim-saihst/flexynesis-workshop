@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DataImporter Reference &#8212; Flexynesis Workshop</title>
+    <title>HyperparameterTuning Reference &#8212; Flexynesis Workshop</title>
   
   
   
@@ -60,11 +60,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data_guide';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hpo_guide';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="HyperparameterTuning Reference" href="hpo_guide.html" />
-    <link rel="prev" title="Models" href="models.html" />
+    <link rel="next" title="Evaluation Metrics" href="evaluation.html" />
+    <link rel="prev" title="DataImporter Reference" href="data_guide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -164,8 +164,8 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DataImporter Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hpo_guide.html">HyperparameterTuning Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_guide.html">DataImporter Reference</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">HyperparameterTuning Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_data.html">Using Your Own Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flexynesis_workshop.html">Flexynesis Workshop</a></li>
@@ -246,7 +246,7 @@
       
       
       
-      <li><a href="https://github.com/cykim-saihst/flexynesis-workshop/issues/new?title=Issue%20on%20page%20%2Fdata_guide.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/cykim-saihst/flexynesis-workshop/issues/new?title=Issue%20on%20page%20%2Fhpo_guide.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -276,7 +276,7 @@
       
       
       
-      <li><a href="_sources/data_guide.md" target="_blank"
+      <li><a href="_sources/hpo_guide.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -352,7 +352,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DataImporter Reference</h1>
+    <h1>HyperparameterTuning Reference</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -363,8 +363,9 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-to-features-file-format">restrict_to_features File Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure">Directory Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-values">Return Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-load-model">Save / Load Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-space">Search Space</a></li>
 </ul>
             </nav>
         </div>
@@ -376,17 +377,17 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dataimporter-reference">
-<h1>DataImporter Reference<a class="headerlink" href="#dataimporter-reference" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p><strong>필수 입력</strong>: <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">data_types</span></code></p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_importer</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataImporter</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="n">PATH</span><span class="p">,</span>
-    <span class="n">data_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gex&#39;</span><span class="p">,</span> <span class="s1">&#39;cna&#39;</span><span class="p">,</span> <span class="s1">&#39;mut&#39;</span><span class="p">],</span>
-    <span class="o">...</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="hyperparametertuning-reference">
+<h1>HyperparameterTuning Reference<a class="headerlink" href="#hyperparametertuning-reference" title="Link to this heading">#</a></h1>
+<p>Bayesian optimization(skopt)으로 hyperparameter search space를 탐색해 최적 파라미터를 찾는 클래스.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tuner</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">HyperparameterTuning</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span>
+    <span class="n">model_class</span><span class="o">=</span><span class="n">flexynesis</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DirectPred</span><span class="p">,</span>
+    <span class="n">target_variables</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CLAUDIN_SUBTYPE&#39;</span><span class="p">],</span>
+    <span class="n">config_name</span><span class="o">=</span><span class="s1">&#39;DirectPred&#39;</span><span class="p">,</span>
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">data_importer</span><span class="o">.</span><span class="n">import_data</span><span class="p">()</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">best_params</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">perform_tuning</span><span class="p">()</span>
 </pre></div>
 </div>
 <section id="parameters">
@@ -400,107 +401,158 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataset</span></code></p></td>
 <td><p>—</p></td>
 <td class="text-center"><p>✅</p></td>
-<td><p>train/test 폴더가 있는 상위 디렉토리 경로</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DataImporter.import_data()</span></code>로 얻은 train dataset</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">data_types</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">model_class</span></code></p></td>
 <td><p>—</p></td>
 <td class="text-center"><p>✅</p></td>
-<td><p>사용할 omics 레이어 리스트 (폴더 내 파일명 기준, 예: <code class="docutils literal notranslate"><span class="pre">['gex',</span> <span class="pre">'cna']</span></code>)</p></td>
+<td><p>사용할 모델 클래스 (<code class="docutils literal notranslate"><span class="pre">flexynesis.models.DirectPred</span></code> 등)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">concatenate</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target_variables</span></code></p></td>
+<td><p>—</p></td>
+<td class="text-center"><p>✅</p></td>
+<td><p>예측할 변수 리스트 (clin.csv 컬럼명, 예: <code class="docutils literal notranslate"><span class="pre">['CLAUDIN_SUBTYPE']</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">config_name</span></code></p></td>
+<td><p>—</p></td>
+<td class="text-center"><p>✅</p></td>
+<td><p>HPO search space 이름 — model_class 이름과 동일하게 지정</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">n_iter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">10</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>Bayesian HPO 반복 횟수. 높을수록 더 많은 조합 탐색 (실제 분석: 50+)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">config_path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>커스텀 YAML HPO 설정 파일 경로. <code class="docutils literal notranslate"><span class="pre">None</span></code>이면 내장 search space 사용</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">val_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.2</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>validation 비율</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">use_cv</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code>=intermediate fusion (레이어별 개별 encoder) / <code class="docutils literal notranslate"><span class="pre">True</span></code>=early fusion (concat 후 single encoder)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code>=K-fold CV로 HPO / <code class="docutils literal notranslate"><span class="pre">False</span></code>=단일 train-val split</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_percentile</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">20</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cv_splits</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p>Laplacian score 상위 N% feature만 유지</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">use_cv=True</span></code>일 때 fold 수</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_features</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">use_loss_weighting</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p>percentile 적용 후 최소 보장 feature 수 (부족하면 하위 feature로 보충)</p></td>
+<td><p>Kendall uncertainty weighting으로 멀티태스크 loss 자동 조정</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">correlation_threshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.9</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">early_stop_patience</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p>이 이상 상관된 feature 쌍에서 하나 제거 (낮출수록 더 공격적으로 제거)</p></td>
+<td><p>validation loss 개선 없을 때 조기 종료 epoch 수. <code class="docutils literal notranslate"><span class="pre">-1</span></code>=비활성화</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variance_threshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.01</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>분산 하위 N% feature 제거 (높일수록 더 많이 제거, 0~1 사이)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">na_threshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>feature의 NA 비율이 이 이상이면 해당 feature 제거</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log_transform</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plot_losses</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code>면 전처리 후 log1p 변환 (raw count 데이터에 유용)</p></td>
+<td><p>학습 중 loss 실시간 시각화 (Jupyter 인터랙티브 환경에서 유용)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">covariates</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">device_type</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p>batch correction용 공변량 변수명 리스트 (예: <code class="docutils literal notranslate"><span class="pre">['COHORT']</span></code>, clin.csv 컬럼 기준)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code>=자동 감지 / <code class="docutils literal notranslate"><span class="pre">'gpu'</span></code> / <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">downsample</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">num_workers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>=전체 샘플 / N&gt;0이면 N개로 랜덤 다운샘플</p></td>
+<td><p>DataLoader 병렬 worker 수. Jupyter에서 MultiTripletNetwork 사용 시 <code class="docutils literal notranslate"><span class="pre">0</span></code> 권장</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">restrict_to_features</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">surv_event_var</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 <td class="text-center"><p></p></td>
-<td><p>특정 feature만 사용 — <strong>텍스트 파일 경로</strong>를 지정</p></td>
+<td><p>생존 event 변수명 (예: <code class="docutils literal notranslate"><span class="pre">'OS_STATUS'</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">surv_time_var</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>생존 time 변수명 (예: <code class="docutils literal notranslate"><span class="pre">'OS_MONTHS'</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">batch_variables</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>batch effect correction용 변수 리스트</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gnn_conv_type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>GNN conv 타입: <code class="docutils literal notranslate"><span class="pre">'GC'</span></code>(기본), <code class="docutils literal notranslate"><span class="pre">'GCN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GAT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SAGE'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">input_layers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>CrossModalPred 입력 omics 레이어 (예: <code class="docutils literal notranslate"><span class="pre">['gex']</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">output_layers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td class="text-center"><p></p></td>
+<td><p>CrossModalPred 출력 omics 레이어 (예: <code class="docutils literal notranslate"><span class="pre">['cna']</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="restrict-to-features-file-format">
-<h2>restrict_to_features File Format<a class="headerlink" href="#restrict-to-features-file-format" title="Link to this heading">#</a></h2>
-<p>feature selection보다 먼저 적용. 이 리스트 안에서만 Laplacian score를 계산.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># gene_panel.txt</span>
-<span class="n">BRCA1</span>
-<span class="n">BRCA2</span>
-<span class="n">TP53</span>
-<span class="n">ERBB2</span>
-<span class="n">ESR1</span>
+<section id="return-values">
+<h2>Return Values<a class="headerlink" href="#return-values" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">,</span> <span class="n">best_params</span> <span class="o">=</span> <span class="n">tuner</span><span class="o">.</span><span class="n">perform_tuning</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_importer</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataImporter</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="n">PATH</span><span class="p">,</span>
-    <span class="n">data_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gex&#39;</span><span class="p">],</span>
-    <span class="n">restrict_to_features</span><span class="o">=</span><span class="s1">&#39;./gene_panel.txt&#39;</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>반환값</p></th>
+<th class="head"><p>설명</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
+<td><p>최적 파라미터로 학습된 모델 객체</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">best_params</span></code></p></td>
+<td><p>최적 hyperparameter dict</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="save-load-model">
+<h2>Save / Load Model<a class="headerlink" href="#save-load-model" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 저장</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;./models/DirectPred.pth&#39;</span><span class="p">)</span>
+
+<span class="c1"># 불러오기</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;./models/DirectPred.pth&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="directory-structure">
-<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PATH/
-├── train/
-│   ├── clin.csv      # 샘플 × 임상변수 (index=sample ID)
-│   ├── gex.csv       # feature × 샘플
-│   ├── cna.csv       # feature × 샘플
-│   └── mut.csv       # feature × 샘플
-└── test/
-    ├── clin.csv
-    ├── gex.csv
-    ├── cna.csv
-    └── mut.csv
+<section id="search-space">
+<h2>Search Space<a class="headerlink" href="#search-space" title="Link to this heading">#</a></h2>
+<p>각 모델의 기본 search space는 <code class="docutils literal notranslate"><span class="pre">latent_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">hidden_dim_factor</span></code>, <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> 등을 포함. <code class="docutils literal notranslate"><span class="pre">config_path</span></code>로 YAML 파일을 지정하면 커스텀 search space를 사용할 수 있음.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># custom_config.yaml 예시</span>
+<span class="nt">DirectPred</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">latent_dim</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Integer</span>
+<span class="w">    </span><span class="nt">low</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">    </span><span class="nt">high</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">  </span><span class="nt">learning_rate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Real</span>
+<span class="w">    </span><span class="nt">low</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0001</span>
+<span class="w">    </span><span class="nt">high</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.01</span>
+<span class="w">    </span><span class="nt">prior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log-uniform</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>omics 파일은 <strong>행=feature, 열=sample</strong> 형식.</p>
-</div></blockquote>
 </section>
 </section>
 
@@ -535,20 +587,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="models.html"
+       href="data_guide.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Models</p>
+        <p class="prev-next-title">DataImporter Reference</p>
       </div>
     </a>
     <a class="right-next"
-       href="hpo_guide.html"
+       href="evaluation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">HyperparameterTuning Reference</p>
+        <p class="prev-next-title">Evaluation Metrics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -571,8 +623,9 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-to-features-file-format">restrict_to_features File Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure">Directory Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-values">Return Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-load-model">Save / Load Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-space">Search Space</a></li>
 </ul>
   </nav></div>
 

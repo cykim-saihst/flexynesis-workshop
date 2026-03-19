@@ -38,8 +38,9 @@ BRCA METABRIC — gex + cna + mut (mini: 200 train / 80 test)
 
 ```bash
 git clone https://github.com/cykim-saihst/flexynesis-workshop.git
-cd flexynesis-workshop
-conda env create -f environment.yml
+conda create -n flexy python=3.11 -y
+conda activate flexy
+pip install flexynesis jupyter
 ```
 
 ### 실행

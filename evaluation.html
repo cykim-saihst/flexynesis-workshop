@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DataImporter Reference &#8212; Flexynesis Workshop</title>
+    <title>Evaluation Metrics &#8212; Flexynesis Workshop</title>
   
   
   
@@ -60,11 +60,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'data_guide';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'evaluation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="HyperparameterTuning Reference" href="hpo_guide.html" />
-    <link rel="prev" title="Models" href="models.html" />
+    <link rel="next" title="Using Your Own Data" href="custom_data.html" />
+    <link rel="prev" title="HyperparameterTuning Reference" href="hpo_guide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -164,9 +164,9 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DataImporter Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_guide.html">DataImporter Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hpo_guide.html">HyperparameterTuning Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Metrics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Evaluation Metrics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_data.html">Using Your Own Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flexynesis_workshop.html">Flexynesis Workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inference_workshop.html">Flexynesis — Inference Workshop</a></li>
@@ -246,7 +246,7 @@
       
       
       
-      <li><a href="https://github.com/cykim-saihst/flexynesis-workshop/issues/new?title=Issue%20on%20page%20%2Fdata_guide.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/cykim-saihst/flexynesis-workshop/issues/new?title=Issue%20on%20page%20%2Fevaluation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -276,7 +276,7 @@
       
       
       
-      <li><a href="_sources/data_guide.md" target="_blank"
+      <li><a href="_sources/evaluation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -352,7 +352,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DataImporter Reference</h1>
+    <h1>Evaluation Metrics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -362,9 +362,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-to-features-file-format">restrict_to_features File Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure">Directory Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-wrapper">evaluate_wrapper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-categorical">Classification (categorical)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-numerical">Regression (numerical)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-analysis">Survival Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised">Unsupervised</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-comparison-tips">Model Comparison Tips</a></li>
 </ul>
             </nav>
         </div>
@@ -376,131 +379,165 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dataimporter-reference">
-<h1>DataImporter Reference<a class="headerlink" href="#dataimporter-reference" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p><strong>필수 입력</strong>: <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">data_types</span></code></p>
-</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_importer</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataImporter</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="n">PATH</span><span class="p">,</span>
-    <span class="n">data_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gex&#39;</span><span class="p">,</span> <span class="s1">&#39;cna&#39;</span><span class="p">,</span> <span class="s1">&#39;mut&#39;</span><span class="p">],</span>
-    <span class="o">...</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="evaluation-metrics">
+<h1>Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading">#</a></h1>
+<section id="evaluate-wrapper">
+<h2>evaluate_wrapper<a class="headerlink" href="#evaluate-wrapper" title="Link to this heading">#</a></h2>
+<p>모델 예측 결과를 평가하는 함수. 변수 타입에 따라 자동으로 적절한 지표를 계산.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">evaluate_wrapper</span><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;DirectPred&#39;</span><span class="p">,</span>
+    <span class="n">y_pred_dict</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">),</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span>
+    <span class="n">surv_event_var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1"># 생존분석일 때만</span>
+    <span class="n">surv_time_var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>    <span class="c1"># 생존분석일 때만</span>
 <span class="p">)</span>
-<span class="n">train_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">data_importer</span><span class="o">.</span><span class="n">import_data</span><span class="p">()</span>
 </pre></div>
 </div>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="classification-categorical">
+<h2>Classification (categorical)<a class="headerlink" href="#classification-categorical" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>파라미터</p></th>
-<th class="head"><p>기본값</p></th>
-<th class="head text-center"><p>필수</p></th>
+<tr class="row-odd"><th class="head"><p>지표</p></th>
 <th class="head"><p>설명</p></th>
+<th class="head"><p>범위</p></th>
+<th class="head"><p>좋은 값</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
-<td><p>—</p></td>
-<td class="text-center"><p>✅</p></td>
-<td><p>train/test 폴더가 있는 상위 디렉토리 경로</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">balanced_acc</span></code></p></td>
+<td><p>클래스 불균형 보정 accuracy</p></td>
+<td><p>0 ~ 1</p></td>
+<td><p>높을수록</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">data_types</span></code></p></td>
-<td><p>—</p></td>
-<td class="text-center"><p>✅</p></td>
-<td><p>사용할 omics 레이어 리스트 (폴더 내 파일명 기준, 예: <code class="docutils literal notranslate"><span class="pre">['gex',</span> <span class="pre">'cna']</span></code>)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">f1_score</span></code></p></td>
+<td><p>Precision/Recall 조화평균 (weighted)</p></td>
+<td><p>0 ~ 1</p></td>
+<td><p>높을수록</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">concatenate</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code>=intermediate fusion (레이어별 개별 encoder) / <code class="docutils literal notranslate"><span class="pre">True</span></code>=early fusion (concat 후 single encoder)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kappa</span></code></p></td>
+<td><p>우연에 의한 일치를 보정한 agreement 지표</p></td>
+<td><p>-1 ~ 1</p></td>
+<td><p>0.6+ 양호</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">top_percentile</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">20</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>Laplacian score 상위 N% feature만 유지</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">average_auroc</span></code></p></td>
+<td><p>각 클래스별 ROC-AUC의 weighted 평균</p></td>
+<td><p>0 ~ 1</p></td>
+<td><p>0.7+ 양호</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_features</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>percentile 적용 후 최소 보장 feature 수 (부족하면 하위 feature로 보충)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">average_aupr</span></code></p></td>
+<td><p>각 클래스별 PR-AUC의 weighted 평균</p></td>
+<td><p>0 ~ 1</p></td>
+<td><p>높을수록 (클래스 불균형 시 AUROC보다 informative)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">correlation_threshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.9</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>이 이상 상관된 feature 쌍에서 하나 제거 (낮출수록 더 공격적으로 제거)</p></td>
+</tbody>
+</table>
+</div>
+<p><strong>언제 어떤 걸 볼까?</strong></p>
+<ul class="simple">
+<li><p>클래스가 균형잡혀 있으면 → <code class="docutils literal notranslate"><span class="pre">balanced_acc</span></code>, <code class="docutils literal notranslate"><span class="pre">f1_score</span></code></p></li>
+<li><p>클래스 불균형 있으면 → <code class="docutils literal notranslate"><span class="pre">average_aupr</span></code> 우선</p></li>
+<li><p>전반적인 discriminative 능력 → <code class="docutils literal notranslate"><span class="pre">average_auroc</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="regression-numerical">
+<h2>Regression (numerical)<a class="headerlink" href="#regression-numerical" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>지표</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>범위</p></th>
+<th class="head"><p>좋은 값</p></th>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variance_threshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.01</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>분산 하위 N% feature 제거 (높일수록 더 많이 제거, 0~1 사이)</p></td>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mse</span></code></p></td>
+<td><p>Mean Squared Error</p></td>
+<td><p>0 ~ ∞</p></td>
+<td><p>낮을수록</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">na_threshold</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0.1</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>feature의 NA 비율이 이 이상이면 해당 feature 제거</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">r2</span></code></p></td>
+<td><p>분산 설명 비율 (R²)</p></td>
+<td><p>-∞ ~ 1</p></td>
+<td><p>1에 가까울수록</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log_transform</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code>면 전처리 후 log1p 변환 (raw count 데이터에 유용)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">covariates</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>batch correction용 공변량 변수명 리스트 (예: <code class="docutils literal notranslate"><span class="pre">['COHORT']</span></code>, clin.csv 컬럼 기준)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">downsample</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>=전체 샘플 / N&gt;0이면 N개로 랜덤 다운샘플</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">restrict_to_features</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
-<td class="text-center"><p></p></td>
-<td><p>특정 feature만 사용 — <strong>텍스트 파일 경로</strong>를 지정</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pearson_corr</span></code></p></td>
+<td><p>예측값-실제값 선형 상관계수</p></td>
+<td><p>-1 ~ 1</p></td>
+<td><p>높을수록</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="restrict-to-features-file-format">
-<h2>restrict_to_features File Format<a class="headerlink" href="#restrict-to-features-file-format" title="Link to this heading">#</a></h2>
-<p>feature selection보다 먼저 적용. 이 리스트 안에서만 Laplacian score를 계산.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># gene_panel.txt</span>
-<span class="n">BRCA1</span>
-<span class="n">BRCA2</span>
-<span class="n">TP53</span>
-<span class="n">ERBB2</span>
-<span class="n">ESR1</span>
-</pre></div>
+<hr class="docutils" />
+<section id="survival-analysis">
+<h2>Survival Analysis<a class="headerlink" href="#survival-analysis" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>지표</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>범위</p></th>
+<th class="head"><p>좋은 값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cindex</span></code></p></td>
+<td><p>Concordance Index — 사건 발생 순서를 얼마나 잘 예측하는지</p></td>
+<td><p>0 ~ 1</p></td>
+<td><p>0.5=랜덤, 0.7+ 양호</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_importer</span> <span class="o">=</span> <span class="n">flexynesis</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataImporter</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="n">PATH</span><span class="p">,</span>
-    <span class="n">data_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gex&#39;</span><span class="p">],</span>
-    <span class="n">restrict_to_features</span><span class="o">=</span><span class="s1">&#39;./gene_panel.txt&#39;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">surv_event_var</span></code>와 <code class="docutils literal notranslate"><span class="pre">surv_time_var</span></code>를 지정해야 계산됨.</p>
 </section>
-<section id="directory-structure">
-<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PATH/
-├── train/
-│   ├── clin.csv      # 샘플 × 임상변수 (index=sample ID)
-│   ├── gex.csv       # feature × 샘플
-│   ├── cna.csv       # feature × 샘플
-│   └── mut.csv       # feature × 샘플
-└── test/
-    ├── clin.csv
-    ├── gex.csv
-    ├── cna.csv
-    └── mut.csv
-</pre></div>
+<hr class="docutils" />
+<section id="unsupervised">
+<h2>Unsupervised<a class="headerlink" href="#unsupervised" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">supervised_vae</span></code>를 <code class="docutils literal notranslate"><span class="pre">target_variables=[]</span></code>로 학습 후 클러스터링 결과를 알려진 레이블과 비교할 때 사용.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>지표</p></th>
+<th class="head"><p>설명</p></th>
+<th class="head"><p>범위</p></th>
+<th class="head"><p>좋은 값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AMI</span></code></p></td>
+<td><p>Adjusted Mutual Information — 클러스터와 레이블 간 정보 일치도</p></td>
+<td><p>0 ~ 1</p></td>
+<td><p>높을수록</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ARI</span></code></p></td>
+<td><p>Adjusted Rand Index — 클러스터 쌍 일치율 (우연 보정)</p></td>
+<td><p>-1 ~ 1</p></td>
+<td><p>높을수록</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <blockquote>
-<div><p>omics 파일은 <strong>행=feature, 열=sample</strong> 형식.</p>
+<div><p>AMI/ARI는 <code class="docutils literal notranslate"><span class="pre">evaluate_wrapper</span></code>가 아닌 클러스터링 후 직접 계산.</p>
 </div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="model-comparison-tips">
+<h2>Model Comparison Tips<a class="headerlink" href="#model-comparison-tips" title="Link to this heading">#</a></h2>
+<p>여러 모델 결과를 모아 비교할 때:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_metrics</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">all_metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metrics_dp</span><span class="p">)</span>
+<span class="n">all_metrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metrics_vae</span><span class="p">)</span>
+<span class="c1"># ...</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_metrics</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;balanced_acc&#39;</span><span class="p">,</span> <span class="s1">&#39;average_auroc&#39;</span><span class="p">,</span> <span class="s1">&#39;f1_score&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -535,20 +572,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="models.html"
+       href="hpo_guide.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Models</p>
+        <p class="prev-next-title">HyperparameterTuning Reference</p>
       </div>
     </a>
     <a class="right-next"
-       href="hpo_guide.html"
+       href="custom_data.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">HyperparameterTuning Reference</p>
+        <p class="prev-next-title">Using Your Own Data</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -570,9 +607,12 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-to-features-file-format">restrict_to_features File Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-structure">Directory Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-wrapper">evaluate_wrapper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-categorical">Classification (categorical)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-numerical">Regression (numerical)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#survival-analysis">Survival Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised">Unsupervised</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-comparison-tips">Model Comparison Tips</a></li>
 </ul>
   </nav></div>
 
