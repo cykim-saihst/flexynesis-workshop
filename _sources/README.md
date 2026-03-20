@@ -45,6 +45,9 @@ pip install flexynesis jupyter
 
 ## Run
 
+1. Download [`flexynesis_workshop.ipynb`](https://github.com/cykim-saihst/flexynesis-workshop/blob/main/flexynesis_workshop.ipynb) (click "Download raw file")
+2. Run:
+
 ```bash
 conda activate flexy
 jupyter notebook flexynesis_workshop.ipynb
